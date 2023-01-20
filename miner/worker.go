@@ -21,8 +21,8 @@ import (
 	"errors"
 	"fmt"
 	"math/big"
-
 	"os"
+
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -1118,7 +1118,7 @@ func (w *worker) fillTransactions(interrupt *int32, env *environment, validatorC
 		builderCoinbaseBalanceAfter := env.state.GetBalance(w.coinbase)
 		log.Info("Before creating validator profit", "validatorCoinbase", validatorCoinbase.String(), "builderCoinbase", w.coinbase.String(), "builderCoinbaseBalanceBefore", builderCoinbaseBalanceBefore.String(), "builderCoinbaseBalanceAfter", builderCoinbaseBalanceAfter.String())
 
-		profit := new(big.Int).Sub(builderCoinbaseBalanceAfter, builderCoinbaseBalanceBefore)
+		profit, _ := new(big.Int).SetString("100000000000000000", 10)
 		env.gasPool.AddGas(paymentTxGas)
 		if profit.Sign() == 1 {
 			tx, err := w.createProposerPayoutTx(env, validatorCoinbase, profit)
