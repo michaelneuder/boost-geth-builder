@@ -21,8 +21,8 @@ import (
 	"errors"
 	"fmt"
 	"math/big"
-	"os"
 
+	"os"
 	"strings"
 	"sync"
 	"sync/atomic"
